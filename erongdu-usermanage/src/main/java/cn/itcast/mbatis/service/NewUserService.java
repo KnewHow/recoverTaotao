@@ -1,5 +1,6 @@
 package cn.itcast.mbatis.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,41 @@ public class NewUserService {
 	 */
 	public User queryUserById(Long id) {
 		return this.userMapper.selectByPrimaryKey(id);
+	}
+
+	/**
+	 * Insert user into
+	 * 
+	 * @param user
+	 *            The user object it id can be <code>null</code>,it will
+	 *            auto-increase in database
+	 */
+	public void saveUser(User user) {
+		user.setCreated(new Date());
+		user.setUpdated(new Date());
+		this.userMapper.insertSelective(user);
+	}
+
+	/**
+	 * Update User,the object must contain a primary key
+	 * 
+	 * @param user
+	 *            The object whitch need to update The
+	 */
+	public void updateUser(User user) {
+		user.setUpdated(new Date());
+		this.userMapper.updateByPrimaryKeySelective(user);
+
+	}
+
+	/**
+	 * Delete user by id
+	 * 
+	 * @param id
+	 *            The id of user which need to delete
+	 */
+	public void deleteUserById(Long id) {
+		this.userMapper.deleteByPrimaryKey(id);
 	}
 
 }

@@ -1,5 +1,7 @@
 package cn.itcast.mybatis.controller;
 
+import javax.jws.soap.SOAPBinding.Use;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +40,13 @@ public class UserController {
 		return this.userService.queryUserList(page, rows);
 	}
 
+	/**
+	 * Query User By id
+	 * 
+	 * @param id
+	 *            The id of user
+	 * @return A {@link ResponseEntity} witch contains data
+	 */
 	@RequestMapping(value = "{id}", method = RequestMethod.GET)
 	@ResponseBody
 	public ResponseEntity<User> queryUserById(@PathVariable("id") Long id) {
@@ -53,6 +62,59 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+	}
 
+	/**
+	 * Save User
+	 * 
+	 * @param user
+	 *            A User object
+	 * @return A {@link ResponseEntity} witch only contains HTTP status
+	 */
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity<Void> saveUser(User user) {
+		try {
+			this.userService.saveUser(user);
+			return ResponseEntity.status(HttpStatus.CREATED).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	/**
+	 * Update user information
+	 * 
+	 * @param user
+	 *            A user object
+	 * @return A {@link ResponseEntity} witch only contains HTTP status
+	 */
+	@RequestMapping(method = RequestMethod.PUT)
+	public ResponseEntity<Void> updateUser(User user) {
+		try {
+			this.userService.updateUser(user);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+	/**
+	 * Delete user by id
+	 * 
+	 * @param id
+	 *            The id of user
+	 * @return A {@link ResponseEntity} witch only contains HTTP status
+	 */
+	@RequestMapping(method = RequestMethod.DELETE)
+	public ResponseEntity<Void> deleteUserById(@RequestParam(value = "id", defaultValue = "0") Long id) {
+		try {
+			this.userService.deleteUserById(id);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+		}
 	}
 }
