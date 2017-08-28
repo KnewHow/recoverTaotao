@@ -2,6 +2,9 @@ package cn.itcast.mybatis.pojo;
 
 import java.util.Date;
 
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 /**
  * The pojo of User
  * 
@@ -11,8 +14,10 @@ import java.util.Date;
  *
  * @data 2017年8月28日
  */
+@Table(name="tb_user")
 public class User {
 
+	@Id
 	private Long id;
 
 	// 用户名

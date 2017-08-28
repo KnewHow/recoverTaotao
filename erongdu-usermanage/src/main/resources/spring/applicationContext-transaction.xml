@@ -26,5 +26,4 @@
 			id="myPointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />
 	</aop:config>
-
 </beans>
