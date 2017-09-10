@@ -128,6 +128,9 @@
 			   },
 			   500 : function(){
 				   $.messager.alert('提示','新增商品失败!');
+			   },
+			   404 : function(){
+				   $.messager.alert('提示','新增商品失败!');
 			   }
 		   }
 		});

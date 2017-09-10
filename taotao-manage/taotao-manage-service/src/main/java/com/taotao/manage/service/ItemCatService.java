@@ -9,10 +9,7 @@ import com.taotao.manage.mapper.ItemCatMapper;
 import com.taotao.manage.pojo.ItemCat;
 
 @Service
-public class ItemCatService {
-
-	@Autowired
-	private ItemCatMapper itemCatMapper;
+public class ItemCatService extends BaseService<ItemCat> {
 
 	/**
 	 * Find item cat by parent id
@@ -24,6 +21,6 @@ public class ItemCatService {
 	public List<ItemCat> findItemCatsByParentId(Long parentId) {
 		ItemCat itemCat = new ItemCat();
 		itemCat.setParentId(parentId);
-		return this.itemCatMapper.select(itemCat);
+		return this.queryListByWhere(itemCat);
 	}
 }
