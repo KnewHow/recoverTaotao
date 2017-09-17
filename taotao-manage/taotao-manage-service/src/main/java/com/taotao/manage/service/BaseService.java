@@ -10,7 +10,15 @@ import com.github.abel533.mapper.Mapper;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.taotao.manage.pojo.BasePojo;
-
+/**
+ * 
+ * @author yuanghohao
+ * 
+ * @company erongdu
+ *
+ * @date 2017年9月17日
+ * @param <T>
+ */
 public abstract class BaseService<T extends BasePojo> {
 
 	// private Mapper<T> mapper;

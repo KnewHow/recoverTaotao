@@ -4,7 +4,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Date;
-import java.util.Properties;
 
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletResponse;

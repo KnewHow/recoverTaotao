@@ -26,4 +26,6 @@
 			id="myPointcut" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="myPointcut" />
 	</aop:config>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>
+
